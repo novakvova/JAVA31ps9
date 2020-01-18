@@ -4,12 +4,14 @@ public class Car implements ShowInfo {
 	private String name;
 	private String color;
 	private double price;
+	private Engine engine;
 
-	public Car(String name, String color, double price) {
+	public Car(String name, String color, double price, Engine engine) {
 		super();
 		this.name = name;
 		this.color = color;
 		this.price = price;
+		this.engine = engine;
 	}
 	
 	public String getName() {
@@ -33,6 +35,7 @@ public class Car implements ShowInfo {
 
 	@Override
 	public void Show() {
+		engine.start();
 		System.out.printf("Name: %s\tColor%s\tPrice: %f\n", name, color, price);
 	}
 }

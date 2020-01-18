@@ -1,14 +1,26 @@
 import java.util.*;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class MainApp {
 
 	public static void main(String[] args) {
 		// System.out.println("Hello");
 		// ArrayListBasic();
 		// ArrayListModivy();
-		//ArrayToArrayList();
-		//SearchSortArrayList();
-		ArrayListCustomObject();
+		// ArrayToArrayList();
+		// SearchSortArrayList();
+		// ArrayListCustomObject();
+		// load the spring configuration file
+		ClassPathXmlApplicationContext context = 
+				new ClassPathXmlApplicationContext("JavaSpringConfig.xml");
+
+		Engine engine = context.getBean("myEngine", Engine.class); // new EngineLanos(); //new EngineBMW();
+		// engine.start();
+
+		Car car = new Car("Беха", "Black", 200, engine);
+		car.Show();
+
 	}
 
 	private static void ArrayListBasic() {
@@ -63,44 +75,44 @@ public class MainApp {
 	}
 
 	private static void SearchSortArrayList() {
-	      // Sort and search an "array" of Strings
-	      String[] array = {"Hello", "hello", "Hi", "HI"};
-	 
-	      // Use the Comparable defined in the String class
-	      Arrays.sort(array);
-	      System.out.println(Arrays.toString(array));  // [HI, Hello, Hi, hello]
-	 
-	      // Try binary search - the array must be sorted
-	      System.out.println(Arrays.binarySearch(array, "Hello")); // 1
-	      System.out.println(Arrays.binarySearch(array, "HELLO")); // -1 (insertion at index 0)
-	 
-	      // Sort and search a "List" of Integers
-	      List<Integer> lst = new ArrayList<Integer>();
-	      lst.add(22);  // auto-box
-	      lst.add(11);
-	      lst.add(44);
-	      lst.add(33);
-	      Collections.sort(lst);    // Use the Comparable of Integer class
-	      System.out.println(lst);  // [11, 22, 33, 44]
-	      System.out.println(Collections.binarySearch(lst, 22)); // 1
-	      System.out.println(Collections.binarySearch(lst, 35)); // -4 (insertion at index 3)
+		// Sort and search an "array" of Strings
+		String[] array = { "Hello", "hello", "Hi", "HI" };
+
+		// Use the Comparable defined in the String class
+		Arrays.sort(array);
+		System.out.println(Arrays.toString(array)); // [HI, Hello, Hi, hello]
+
+		// Try binary search - the array must be sorted
+		System.out.println(Arrays.binarySearch(array, "Hello")); // 1
+		System.out.println(Arrays.binarySearch(array, "HELLO")); // -1 (insertion at index 0)
+
+		// Sort and search a "List" of Integers
+		List<Integer> lst = new ArrayList<Integer>();
+		lst.add(22); // auto-box
+		lst.add(11);
+		lst.add(44);
+		lst.add(33);
+		Collections.sort(lst); // Use the Comparable of Integer class
+		System.out.println(lst); // [11, 22, 33, 44]
+		System.out.println(Collections.binarySearch(lst, 22)); // 1
+		System.out.println(Collections.binarySearch(lst, 35)); // -4 (insertion at index 3)
 	}
 
 	private static void ArrayListCustomObject() {
-		
-		List<Car> cars = new ArrayList<Car>();
-		cars.add(new Car("Skoda Fabia", "Green", 120000));
-		cars.add(new Car("Bugatti", "Blue", 12000000));
-		cars.add(new Car("Zuhuli", "White", 28000));
-		for (Car car : cars) {
-			car.Show();
-		}
-		Collections.sort(cars, new SortbyPrice());
-		
-		for (Car car : cars) {
-			car.Show();
-		}
-		
+
+//		List<Car> cars = new ArrayList<Car>();
+//		cars.add(new Car("Skoda Fabia", "Green", 120000));
+//		cars.add(new Car("Bugatti", "Blue", 12000000));
+//		cars.add(new Car("Zuhuli", "White", 28000));
+//		for (Car car : cars) {
+//			car.Show();
+//		}
+//		Collections.sort(cars, new SortbyPrice());
+//		
+//		for (Car car : cars) {
+//			car.Show();
+//		}
+
 	}
-	
+
 }
